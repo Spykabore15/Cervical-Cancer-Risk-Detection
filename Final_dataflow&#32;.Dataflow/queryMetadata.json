@@ -1,0 +1,27 @@
+{
+  "formatVersion": "202502",
+  "computeEngineSettings": {},
+  "name": "Dataflow 2",
+  "queryGroups": [],
+  "documentLocale": "en-US",
+  "queriesMetadata": {
+    "DefaultDestination": {
+      "queryId": "852ba0f6-008d-446c-aca3-7228c905b2f1",
+      "queryName": "DefaultDestination",
+      "isHidden": true,
+      "loadEnabled": false
+    },
+    "cervical_cancer_data_cleaned": {
+      "queryId": "80fcda12-8513-4002-bd6a-2ba71bccdba4",
+      "queryName": "cervical_cancer_data_cleaned",
+      "loadEnabled": false
+    }
+  },
+  "connections": [
+    {
+      "path": "Lakehouse",
+      "kind": "Lakehouse",
+      "connectionId": "{\"ClusterId\":\"73cea962-954a-4cf4-ac68-ba9ac48fec15\",\"DatasourceId\":\"bf7c3457-8167-4e3f-9c51-e8d0635d974d\"}"
+    }
+  ]
+}
