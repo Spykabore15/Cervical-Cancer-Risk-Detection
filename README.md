@@ -1,118 +1,130 @@
+# 📊 Cervical Cancer Detection – End-to-End ML Pipeline  
 
-#📊 Cervical Cancer Detection – End-to-End ML Pipeline
-📌 Project Overview
+**📍 EFREI Paris | Author: Juvénis Kaboré**  
+🧠 *Predicting cervical cancer risk using machine learning and Microsoft Fabric orchestration.*
 
-This project develops an end-to-end machine learning pipeline for predicting cervical cancer based on clinical and behavioral risk factors.
+---
 
-The pipeline is built and orchestrated in Microsoft Fabric with Git integration, ensuring reproducibility, automation, and version control.
+## 📌 Project Overview  
 
-Key steps include:
+This project develops a complete **end-to-end machine learning pipeline** for predicting **cervical cancer** based on clinical and behavioral risk factors.  
 
-Data preprocessing using Dataflow Gen2 (Dataflow 2)
+The pipeline is **built and orchestrated in Microsoft Fabric** with **Git integration**, ensuring full reproducibility, automation, and version control across all stages of the workflow.  
 
-Exploratory Data Analysis (EDA) & model benchmarking in a dedicated research notebook
+### 🔑 Key Steps
+- **Data preprocessing** using **Dataflow Gen2 (Dataflow 2)**  
+- **Exploratory Data Analysis (EDA)** & model benchmarking in a dedicated research notebook  
+- **Final orchestrated pipeline** combining Dataflow preprocessing and CatBoost model training  
+- **Deployment-ready model export** for integration into downstream applications  
 
-Final orchestrated pipeline combining Dataflow preprocessing and CatBoost model training
+---
 
-Deployment-ready model export for integration into downstream applications
+## 📂 Repository & Workspace Structure  
 
-📂 Repository & Workspace Structure
-├── Dataflow_2/                        # Dataflow Gen2 pipeline (data preprocessing)
-│   └── cervical_cancer_data_cleaned   # Cleaned dataset (output)
-├── data training notebook.py           # Research notebook: EDA, feature selection, model comparison
-├── Final_notebook.py                   # Final deployable ML model (CatBoost)
-├── Final_pipeline/                     # Data pipeline orchestration
-│   ├── Dataflow_2                      # Executes preprocessing
-│   └── Final_notebook.py               # Runs final model training & saving
-└── README.md                           # Project documentation (this file)
-
-
-In Fabric Workspace (cancer_detection_analysis):
-
-✅ Dataflow (ETL & cleaning)
-
-✅ Notebooks (training & final pipeline)
-
-✅ Pipeline (orchestration)
-
-✅ Lakehouse (storage & analytics)
-
-✅ Git integration (version control, collaboration)
-
-⚙️ Workflow
-1. Data Preprocessing – Dataflow 2
-
-Data ingestion and cleaning via Fabric Dataflow Gen2.
-
-Steps include: missing value handling, outlier filtering, data normalization.
-
-Output stored as cervical_cancer_data_cleaned in Lakehouse.
-
-2. Model Development – Research Notebook
-
-Performed EDA with Pandas, Seaborn, Matplotlib.
-
-Feature selection with RandomForest + SelectFromModel.
-
-Class imbalance handling (RandomOverSampler, SMOTE, ADASYN).
-
-Benchmarked models: RandomForest, XGBoost, CatBoost, SVM.
-
-Feature importance & interpretability with SHAP values.
-
-➡️ CatBoostClassifier selected as final model (best performance & interpretability).
-
-3. Final Pipeline – Orchestration in Fabric
-
-Pipeline runs sequentially:
-
-Dataflow (cleaning)
-
-Notebook (CatBoost training & evaluation)
-
-Trained model saved as:
-
-/lakehouse/default/Files/models/cancerPredictionModelDeployed_catBoost.cbm
+├── Dataflow_2/ # Dataflow Gen2 pipeline (data preprocessing)
+│ └── cervical_cancer_data_cleaned # Cleaned dataset (output)
+├── data_training_notebook.py # Research notebook: EDA, feature selection, model comparison
+├── Final_notebook.py # Final deployable ML model (CatBoost)
+├── Final_pipeline/ # Data pipeline orchestration
+│ ├── Dataflow_2 # Executes preprocessing
+│ └── Final_notebook.py # Runs final model training & saving
+└── README.md # Project documentation
 
 
-Pipeline status: ✅ Succeeded (automated & repeatable).
+---
 
-📊 Results
+## 🧭 Microsoft Fabric Workspace: `cancer_detection_analysis`
 
-Best model: CatBoostClassifier
+✅ **Dataflow** – ETL & data cleaning  
+✅ **Notebooks** – Training and final model pipeline  
+✅ **Pipeline** – End-to-end orchestration  
+✅ **Lakehouse** – Unified storage & analytics layer  
+✅ **Git Integration** – Version control & collaboration  
 
-Key metrics: Precision, Recall, F1-score, ROC-AUC
+---
 
-SHAP interpretability highlights key clinical risk factors (e.g., Age, Number of pregnancies, Smoking history, HPV tests).
+## ⚙️ Workflow  
 
-🚀 Deployment
+### 1️⃣ Data Preprocessing – *Dataflow Gen2*  
+Data ingestion and cleaning performed through Fabric’s **Dataflow Gen2**.  
+**Steps include:**  
+- Handling missing values  
+- Filtering outliers  
+- Feature normalization and schema validation  
+- Exporting the cleaned dataset (`cervical_cancer_data_cleaned`) to **Lakehouse**
 
-Model exported in .cbm format (CatBoost native).
+---
 
-Ready for integration into:
+### 2️⃣ Model Development – *Research Notebook*  
+- Conducted **Exploratory Data Analysis (EDA)** with `Pandas`, `Seaborn`, and `Matplotlib`.  
+- Performed **feature selection** using `RandomForest` + `SelectFromModel`.  
+- Managed **class imbalance** via `SMOTE`, `ADASYN`, and `RandomOverSampler`.  
+- Benchmarked multiple models: `RandomForest`, `XGBoost`, `CatBoost`, and `SVM`.  
+- Used **SHAP values** for feature importance and interpretability.  
+- **Result:** `CatBoostClassifier` selected as the **final model** for its superior performance and explainability.  
 
-REST APIs (Flask / FastAPI)
+---
 
-Clinical dashboards
+### 3️⃣ Final Pipeline – *Fabric Orchestration*  
+A complete **Fabric pipeline** was developed to automate the full ML workflow:  
 
-Batch inference pipelines in Azure ML / Fabric
+**Pipeline sequence:**  
+1. Dataflow → Cleans and pre-processes the data  
+2. Notebook → Trains and evaluates the CatBoost model  
 
-🔧 Tech Stack
 
-Microsoft Fabric (Dataflow Gen2, Pipelines, Lakehouse, Git integration)
+**Best Model:** `CatBoostClassifier`  
+**Interpretability:** SHAP values highlighted critical risk factors including *Age*, *Number of pregnancies*, *Smoking history*, and *HPV test results*.  
 
-Python: pandas, scikit-learn, imbalanced-learn, xgboost, catboost, shap
+---
 
-Visualization: matplotlib, seaborn
+## 🚀 Deployment  
 
-MLOps: Git integration, automated pipeline execution
+The final model (`.cbm` format) is **deployment-ready** and can be integrated into:  
+- 🌐 **REST APIs** (Flask / FastAPI)  
+- 📈 **Clinical dashboards** for healthcare analytics  
+- ☁️ **Batch inference pipelines** in Azure ML / Fabric  
 
-📌 Next Steps
+---
 
-Containerize final pipeline with Docker + Azure ML
+## 🔧 Tech Stack  
 
-Automate retraining with Fabric Pipelines & MLOps best practices
+| Category | Tools & Frameworks |
+|-----------|--------------------|
+| Platform | Microsoft Fabric (Dataflow Gen2, Pipelines, Lakehouse, Git Integration) |
+| Language | Python |
+| Libraries | pandas, scikit-learn, imbalanced-learn, xgboost, catboost, shap |
+| Visualization | matplotlib, seaborn |
+| MLOps | Git integration, automated Fabric pipelines |
 
-Validate on external datasets for robustness
+---
 
-Develop a real-time inference API for clinical deployment
+## 📌 Next Steps  
+
+- Parameters tunning
+- 🐳 Containerize the final pipeline with **Docker + Azure ML**  
+- 🔁 Automate retraining and monitoring via **Fabric Pipelines (MLOps best practices)**  
+- 🧪 Validate model performance on **external datasets** for robustness  
+- 🌐 Develop a **real-time inference API** for clinical deployment  
+
+---
+
+## 🧠 Key Learnings  
+
+- Building modular **end-to-end ML pipelines** using cloud-native tools  
+- Applying **data engineering principles** in healthcare data processing  
+- Balancing model accuracy, interpretability, and automation  
+- Leveraging **Microsoft Fabric** for reproducible and scalable ML workflows  
+
+---
+
+## 👤 Author  
+
+**Juvénis Kaboré**  
+🎓 Data Engineering & AI Student – EFREI Paris  
+📍 Currently in Malaysia | Passionate about AI, MLOps, and cloud data platforms  
+🔗 [LinkedIn](https://www.linkedin.com/in/fortune-kabore) • [GitHub](https://github.com/Spykabore15)
+
+---
+
+⭐ *“Data becomes powerful when it drives meaningful change.”*
