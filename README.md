@@ -1,96 +1,87 @@
-# 📊 Cervical Cancer Detection – End-to-End ML Pipeline  
+# 📈 Cervical Cancer Risk Detection — End-to-End ML Pipeline
 
-**📍 EFREI Paris | Author: Juvénis Kaboré**  
-🧠 *Predicting cervical cancer risk using machine learning and Microsoft Fabric orchestration.*
-
----
-
-## 📌 Project Overview  
-
-This project develops a complete **end-to-end machine learning pipeline** for predicting **cervical cancer** based on clinical and behavioral risk factors.  
-
-The pipeline is **built and orchestrated in Microsoft Fabric** with **Git integration**, ensuring full reproducibility, automation, and version control across all stages of the workflow.  
-
-### 🔑 Key Steps
-- **Data preprocessing** using **Dataflow Gen2 (Dataflow 2)**  
-- **Exploratory Data Analysis (EDA)** & model benchmarking in a dedicated research notebook  
-- **Final orchestrated pipeline** combining Dataflow preprocessing and CatBoost model training  
-- **Deployment-ready model export** for integration into downstream applications  
+**Author:** Juvénis Kaboré  
+EFREI Paris | Data Engineering & AI Student  
+🌍 Currently in Malaysia  
+🔗 [LinkedIn](https://www.linkedin.com/in/fortune-kabore) • [GitHub](https://github.com/Spykabore15)
 
 ---
 
-## 📂 Repository & Workspace Structure  
+## 🩺 Project Overview
 
-├── Dataflow_2/ # Dataflow Gen2 pipeline (data preprocessing)
-│ └── cervical_cancer_data_cleaned # Cleaned dataset (output)
-├── data_training_notebook.py # Research notebook: EDA, feature selection, model comparison
-├── Final_notebook.py # Final deployable ML model (CatBoost)
-├── Final_pipeline/ # Data pipeline orchestration
-│ ├── Dataflow_2 # Executes preprocessing
-│ └── Final_notebook.py # Runs final model training & saving
-└── README.md # Project documentation
+This repository provides a robust **end-to-end machine learning pipeline** for predicting **cervical cancer risk** using clinical and behavioral factors. The pipeline leverages **Microsoft Fabric** for orchestration and reproducibility, integrates with Git for version control, and is built with production readiness in mind.
 
+### Key Features
+- **Modular cloud-native workflow**: ETL, modeling, and deployment stages are clearly separated & automated.
+- **Clinical interpretability**: Integration of SHAP for explaining model decisions.
+- **Deployment ready**: Exported CatBoost model compatible with API, dashboard, and pipeline integration.
 
 ---
 
-## 🧭 Microsoft Fabric Workspace: `cancer_detection_analysis`
+## 🗂️ Repository Structure
 
-✅ **Dataflow** – ETL & data cleaning  
-✅ **Notebooks** – Training and final model pipeline  
-✅ **Pipeline** – End-to-end orchestration  
-✅ **Lakehouse** – Unified storage & analytics layer  
-✅ **Git Integration** – Version control & collaboration  
-
----
-
-## ⚙️ Workflow  
-
-### 1️⃣ Data Preprocessing – *Dataflow Gen2*  
-Data ingestion and cleaning performed through Fabric’s **Dataflow Gen2**.  
-**Steps include:**  
-- Handling missing values  
-- Filtering outliers  
-- Feature normalization and schema validation  
-- Exporting the cleaned dataset (`cervical_cancer_data_cleaned`) to **Lakehouse**
+```plaintext
+Cervical-Cancer-Risk-Detection/
+├── Dataflow_2/                   # Data preprocessing with Dataflow Gen2
+│   └── cervical_cancer_data_cleaned  # Clean dataset (output)
+├── data_training_notebook.py     # Research notebook (EDA, feature selection, model benchmarking)
+├── Final_notebook.py             # Production notebook (CatBoost training + export)
+├── Final_pipeline/               # Fabric orchestration scripts
+│   ├── Dataflow_2                # ETL execution
+│   └── Final_notebook.py         # Model training & registry
+└── README.md                     # Documentation
+```
 
 ---
 
-### 2️⃣ Model Development – *Research Notebook*  
-- Conducted **Exploratory Data Analysis (EDA)** with `Pandas`, `Seaborn`, and `Matplotlib`.  
-- Performed **feature selection** using `RandomForest` + `SelectFromModel`.  
-- Managed **class imbalance** via `SMOTE`, `ADASYN`, and `RandomOverSampler`.  
-- Benchmarked multiple models: `RandomForest`, `XGBoost`, `CatBoost`, and `SVM`.  
-- Used **SHAP values** for feature importance and interpretability.  
-- **Result:** `CatBoostClassifier` selected as the **final model** for its superior performance and explainability.  
+## 🖥️ Microsoft Fabric Workspace: `cancer_detection_analysis`
+
+- **Dataflow** — ETL & Data Cleaning
+- **Notebooks** — Research, training, and deployment pipeline
+- **Pipeline** — Workflow automation within Fabric
+- **Lakehouse** — Unified storage for analytics and models
+- **Git Integration** — Collaboration & version control
 
 ---
 
-### 3️⃣ Final Pipeline – *Fabric Orchestration*  
-A complete **Fabric pipeline** was developed to automate the full ML workflow:  
+## ⚙️ End-to-End Workflow
 
-**Pipeline sequence:**  
-1. Dataflow → Cleans and pre-processes the data  
-2. Notebook → Trains and evaluates the CatBoost model  
+### 1️⃣ Data Preprocessing (Dataflow Gen2)
+- Missing value handling
+- Outlier filtering
+- Feature normalization & schema validation
+- Exporting cleaned dataset to Lakehouse
 
+### 2️⃣ Model Development (Research Notebook)
+- **EDA**: Visualization of risk factors with pandas, seaborn, matplotlib
+- **Feature selection:** RandomForest + SelectFromModel
+- **Class imbalance:** SMOTE, ADASYN, RandomOverSampler (imbalanced-learn)
+- **Model comparison:** RandomForest, XGBoost, CatBoost, SVM
+- **Interpretability:** SHAP values for important features
+- **Outcome:** `CatBoostClassifier` selected for performance & explainability
 
-**Best Model:** `CatBoostClassifier`  
-**Interpretability:** SHAP values highlighted critical risk factors including *Age*, *Number of pregnancies*, *Smoking history*, and *HPV test results*.  
+### 3️⃣ Pipeline Orchestration (Fabric)
+- **Automation:** Microsoft Fabric orchestrates ETL + model training + registry in one pipeline
+- **Sequence:** Dataflow → Notebook (training) → Export model
 
 ---
 
-## 🚀 Deployment  
+## 🤖 ML Model & Deployment
 
-The final model (`.cbm` format) is **deployment-ready** and can be integrated into:  
-- 🌐 **REST APIs** (Flask / FastAPI)  
-- 📈 **Clinical dashboards** for healthcare analytics  
-- ☁️ **Batch inference pipelines** in Azure ML / Fabric  
+- **Best Model:** CatBoostClassifier (.cbm format)
+- **Key features:** Age, Number of pregnancies, Smoking history, HPV test results, etc.
+- **Interpretability:** SHAP plots highlight feature contribution (see notebooks for examples)
+- **Integration options:**
+    - 🟢 REST APIs (Flask, FastAPI)
+    - 🟣 Clinical dashboards
+    - ☁️ Azure ML or Microsoft Fabric batch inference
 
 ---
 
-## 🔧 Tech Stack  
+## 🛠️ Tech Stack
 
 | Category | Tools & Frameworks |
-|-----------|--------------------|
+|----------|--------------------|
 | Platform | Microsoft Fabric (Dataflow Gen2, Pipelines, Lakehouse, Git Integration) |
 | Language | Python |
 | Libraries | pandas, scikit-learn, imbalanced-learn, xgboost, catboost, shap |
@@ -99,32 +90,71 @@ The final model (`.cbm` format) is **deployment-ready** and can be integrated in
 
 ---
 
-## 📌 Next Steps  
+## 🚀 Quickstart
 
-- Parameters tunning
-- 🐳 Containerize the final pipeline with **Docker + Azure ML**  
-- 🔁 Automate retraining and monitoring via **Fabric Pipelines (MLOps best practices)**  
-- 🧪 Validate model performance on **external datasets** for robustness  
-- 🌐 Develop a **real-time inference API** for clinical deployment  
+### Prerequisites
+- Python 3.8+
+- Access to Microsoft Fabric workspace with Dataflow, Lakehouse, and Pipeline capabilities
+
+### Setup
+
+```bash
+# Clone repository
+git clone https://github.com/Spykabore15/Cervical-Cancer-Risk-Detection.git
+
+# (Optional) Set up Python environment
+python3 -m venv .venv
+source .venv/bin/activate
+pip install pandas scikit-learn imbalanced-learn xgboost catboost shap matplotlib seaborn
+
+# Follow notebooks in order (EDA → feature selection → modeling → export)
+# See Dataflow_2/ for preprocessing logic
+```
+
+### Running Model Training
+
+1. Execute `Dataflow_2` for cleansing and export data to Lakehouse.
+2. Open `data_training_notebook.py` and work through EDA, feature selection, class imbalance, and model benchmarking.
+3. Use `Final_notebook.py` for CatBoost model training and export.
+4. Exported models can be integrated into APIs, dashboards, or batch inference pipelines.
 
 ---
 
-## 🧠 Key Learnings  
+## 🧪 Testing
 
-- Building modular **end-to-end ML pipelines** using cloud-native tools  
-- Applying **data engineering principles** in healthcare data processing  
-- Balancing model accuracy, interpretability, and automation  
-- Leveraging **Microsoft Fabric** for reproducible and scalable ML workflows  
+- **Validation:** Accuracy, F1, confusion matrix, ROC-AUC reported in research/model notebooks.
+- **Robustness:** Next steps include testing with external datasets, monitoring, and continuous retraining via MLOps.
 
 ---
 
-## 👤 Author  
+## 📓 Example Results
 
-**Juvénis Kaboré**  
-🎓 Data Engineering & AI Student – EFREI Paris  
-📍 Currently in Malaysia | Passionate about AI, MLOps, and cloud data platforms  
-🔗 [LinkedIn](https://www.linkedin.com/in/fortune-kabore) • [GitHub](https://github.com/Spykabore15)
+Feature Importance Example (SHAP plot):
+```
+Top features: Age, NumOfPregnancies, SmokesPacksYear, DxCancer, HPV related
+Model: CatBoostClassifier
+See `Final_notebook.py` / SHAP summary plots for explainability
+```
+
+Sample performance:
+- F1 score (cross-validated): *provided in confusion matrices in notebooks*
+- Interpretability: *SHAP values and EDA shown in included notebooks*
 
 ---
 
-⭐ *“Data becomes powerful when it drives meaningful change.”*
+## 📋 Next Steps
+
+- Hyperparameter tuning and model selection refinement
+- 🐳 Containerization with Docker + Azure ML
+- 🔁 Automated retraining & drift monitoring
+- 🧑‍⚕️ Real-time API for clinical application
+
+---
+
+## 👨‍💻 Author
+
+**Juvénis Kaboré**
+EFREI Paris — Data Engineering & AI Student
+🌏 [LinkedIn](https://www.linkedin.com/in/fortune-kabore) • [Portfolio](https://juvenis.lovable.app/)
+
+*“Data becomes powerful when it drives meaningful change.”*
