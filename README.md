@@ -1,8 +1,7 @@
 # 📈 Cervical Cancer Risk Detection — End-to-End ML Pipeline
 
 **Author:** Juvénis Kaboré  
-EFREI Paris | Data Engineering & AI Student  
-🌍 Currently in Malaysia  
+EFREI Paris | Data Engineering & AI Student   
 🔗 [LinkedIn](https://www.linkedin.com/in/fortune-kabore) • [GitHub](https://github.com/Spykabore15)
 
 ---
